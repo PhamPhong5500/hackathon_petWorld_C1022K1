@@ -9,5 +9,5 @@ public interface IServiceService {
     List<Service> getServices();
     Service saveCustomer(Service service);
     void deleteService(Long id);
-    Service getService(String name);
+    Service getService(Long id);
 }

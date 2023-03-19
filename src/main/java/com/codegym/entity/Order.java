@@ -14,7 +14,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int total;
+
     private Date time;
     @ManyToOne(targetEntity = Partner.class)
     @JoinColumn(name = "partner_id", referencedColumnName = "id")
@@ -26,5 +26,8 @@ public class Order {
     @JoinColumn(name = "oder_service_id", referencedColumnName = "id")
     private OrderService orderService;
 
+//    @ManyToOne(targetEntity = Cart.class)
+//    @JoinColumn(name = "cart_id")
+//    private Cart cart;
 
 }
