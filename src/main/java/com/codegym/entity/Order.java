@@ -23,11 +23,13 @@ public class Order {
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customers;
     @ManyToOne(targetEntity = OrderService.class)
-    @JoinColumn(name = "oder_service_id", referencedColumnName = "id")
+    @JoinColumn(name = "service_id", referencedColumnName = "id")
     private OrderService orderService;
 
 //    @ManyToOne(targetEntity = Cart.class)
-//    @JoinColumn(name = "cart_id")
+//    @JoinColumn(name = "cart_id", referencedColumnName = "id"))
 //    private Cart cart;
+
+    private Long total;
 
 }

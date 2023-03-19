@@ -1,5 +1,6 @@
 package com.codegym.controller;
 
+import com.codegym.dto.ProductDto;
 import com.codegym.entity.Product;
 import com.codegym.repository.IProductRepository;
 import com.codegym.service.IProductService;
@@ -17,7 +18,7 @@ import java.util.List;
 public class ProductController {
     private final IProductService productService;
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> getProducts(){
+    public ResponseEntity<List<ProductDto>> getProducts(){
         return ResponseEntity.ok().body(productService.getProducts());
     }
 }

@@ -1,11 +1,15 @@
 package com.codegym.controller;
 
 import com.codegym.dto.CustomerDto;
+import com.codegym.dto.PartnerDto;
 import com.codegym.entity.Customer;
+import com.codegym.entity.Partner;
 import com.codegym.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -54,4 +58,10 @@ public class CustomerController {
             return ResponseEntity.noContent().build();
         }
     }
+
+    @GetMapping("/search/{id}")
+    public ResponseEntity<List<PartnerDto>> searchAddress(@PathVariable Long id) {
+        return ResponseEntity.ok().body(customerService.searchPartnerByAddress(id));
+    }
 }
+

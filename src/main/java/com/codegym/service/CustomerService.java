@@ -1,6 +1,7 @@
 package com.codegym.service;
 
 import com.codegym.dto.CustomerDto;
+import com.codegym.dto.PartnerDto;
 import com.codegym.dto.RoleDto;
 import com.codegym.entity.Customer;
 import com.codegym.entity.Role;
@@ -15,6 +16,7 @@ import java.util.List;
 @Service
 public class CustomerService implements ICustomerService{
     private final ICustomerRepository customerRepository;
+    private final IPartnerService partnerService;
     @Override
     public List<CustomerDto> getCustomers() {
         List<CustomerDto> customerDtoList = new ArrayList<>();
@@ -24,6 +26,16 @@ public class CustomerService implements ICustomerService{
                 customer.getImage(), customer.getUsername(), customer.getPassword(), customer.isStatus(),
                 customer.isActive(), new RoleDto(customer.getRole().getId(), customer.getRole().getName()))));
         return customerDtoList;
+    }
+    @Override
+    public List<PartnerDto> searchPartnerByAddress(Long id) {
+        CustomerDto customerDto = getCustomer(id);
+        return partnerService.getPartnerByAddress(getDistrict(customerDto.getAddress()));
+    }
+
+    public String getDistrict(String address){
+        String[] words = address.trim().split(",");
+        return words[1].trim();
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.codegym.service;
 
 import com.codegym.entity.Order;
-import com.codegym.repository.OrderRepository;
+import com.codegym.repository.IOrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class OrderService implements IOrderService{
-    private final OrderRepository orderRepository;
+    private final IOrderRepository orderRepository;
     @Override
     public List<Order> getOrders() {
         return orderRepository.findAll();
